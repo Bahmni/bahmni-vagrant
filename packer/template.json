@@ -1,0 +1,73 @@
+{
+    "push": {
+      "name": "",
+      "vcs": true
+    },
+    "variables": {
+        "atlas_username": "{{env `ATLAS_USERNAME`}}",
+        "atlas_name": "{{env `ATLAS_NAME`}}"
+    },
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": [
+                "scripts/base.sh",
+                "scripts/virtualbox.sh",
+                "scripts/vagrant.sh",
+                "scripts/cleanup.sh",
+                "scripts/zerodisk.sh"
+            ],
+            "override": {
+                "virtualbox-iso": {
+                    "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                }
+            }
+        }
+    ],
+    "builders": [
+    {
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 81920,
+      "guest_os_type": "RedHat_64",
+      "headless": true,
+      "http_directory": "http",
+      "iso_urls": [
+        "iso/CentOS-6.7-x86_64-minimal.iso",
+        "http://centos.mirrors.hoobly.com/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso"
+      ],
+      "iso_checksum_type": "md5",
+      "iso_checksum": "9381a24b8bee2fed0c26896141a64b69",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "virtualbox_version_file": ".vbox_version",
+      "vboxmanage": [
+        [ "modifyvm", "{{.Name}}", "--memory", "512" ],
+        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
+      ]
+    }
+    ],
+    "post-processors": [
+        [{
+            "type": "vagrant",
+            "keep_input_artifact": true
+        },
+        {
+            "type": "atlas",
+            "only": ["virtualbox-iso"],
+            "artifact": "bahmni-team/bahmni",
+            "artifact_type": "vagrant.box",
+            "metadata": {
+                "provider": "virtualbox",
+                "created_at": "{{timestamp}}"
+            }
+        }]
+    ]
+}
