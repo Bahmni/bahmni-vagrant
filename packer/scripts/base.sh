@@ -73,8 +73,11 @@ install_bahmni(){
 
 config_services(){
     chkconfig mysqld on
+    chkconfig postgresql-9.2 on
     chkconfig httpd on
     chkconfig openmrs on
+    chkconfig openerp on
+    chkconfig bahmni-lab on
 }
 
 manage_openmrs_permissions(){

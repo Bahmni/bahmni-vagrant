@@ -8,6 +8,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.synced_folder "..", "/bahmni", :owner => "vagrant"
   config.vm.provider "virtualbox" do |v|
-     v.customize ["modifyvm", :id, "--memory", 3092, "--cpus", 2, "--name", "BahmniLatest"]
+     v.customize ["modifyvm", :id, "--memory", 3092, "--cpus", 2, "--name", "Bahmni-RPM"]
   end
 end
