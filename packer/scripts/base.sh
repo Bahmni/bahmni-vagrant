@@ -68,7 +68,7 @@ restore_pgsql_db(){
 
 install_bahmni(){
     # need to change it to emr-all
-    yum install -y bahmni-emr bahmni-web bahmni-reports bahmni-lab bahmni-erp
+    yum install -y bahmni-emr bahmni-web bahmni-reports bahmni-lab bahmni-lab-connect bahmni-erp
 }
 
 config_services(){
