@@ -12,6 +12,9 @@ COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 443
 EXPOSE 8080
 EXPOSE 8000
+EXPOSE 8069
+EXPOSE 8081
 EXPOSE 3306
+EXPOSE 5432
 
 CMD ["/usr/bin/supervisord"]
