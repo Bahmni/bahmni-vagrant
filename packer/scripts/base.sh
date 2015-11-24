@@ -42,7 +42,7 @@ install_mysql(){
 
 restore_mysql_database(){
     #Optional Step
-    rm -rf mysql_backup.sql.gz
+    rm -rf mysql_backup.sql.gz mysql_backup.sql
     wget https://github.com/Bhamni/emr-functional-tests/blob/master/dbdump/mysql_backup.sql.gz?raw=true -O mysql_backup.sql.gz
     gzip -d mysql_backup.sql.gz
     mysql -uroot -ppassword < mysql_backup.sql
