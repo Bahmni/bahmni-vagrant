@@ -75,7 +75,7 @@ config_services(){
     chkconfig postgresql-9.2 on
     chkconfig httpd on
     chkconfig openmrs on
-    chkconfig openerp on
+    chkconfig bahmni-erp on
     chkconfig bahmni-lab on
 }
 
