@@ -67,8 +67,7 @@ restore_pgsql_db(){
 }
 
 install_bahmni(){
-    # need to change it to emr-all
-    yum install -y bahmni-emr bahmni-web bahmni-reports bahmni-lab bahmni-lab-connect bahmni-erp
+    yum install -y openmrs bahmni-emr bahmni-web bahmni-reports bahmni-lab bahmni-lab-connect bahmni-erp
 }
 
 config_services(){
@@ -80,11 +79,6 @@ config_services(){
     chkconfig bahmni-lab on
 }
 
-manage_openmrs_permissions(){
-    #Temporary fix for managing permissions. Waiting for fixed bahmni-lab rpm
-    chown -R bahmni:bahmni /opt/openmrs
-}
-
 install_virtual_box_specifics
 setup_repos
 install_oracle_jre
@@ -94,4 +88,3 @@ install_pgsql
 restore_pgsql_db
 install_bahmni
 config_services
-manage_openmrs_permissions
