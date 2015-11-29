@@ -78,6 +78,11 @@ config_services(){
     chkconfig bahmni-erp on
     chkconfig bahmni-lab on
 }
+cleanup(){
+    rm jre-7u79-linux-x64.rpm
+    rm pgdg-centos92-9.2-7.noarch.rpm
+    yum clean packages
+}
 
 install_virtual_box_specifics
 setup_repos

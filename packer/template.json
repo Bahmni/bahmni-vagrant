@@ -12,6 +12,7 @@
             "type": "shell",
             "scripts": [
                 "scripts/base.sh",
+                "scripts/dev-tools.sh",
                 "scripts/virtualbox.sh",
                 "scripts/vagrant.sh",
                 "scripts/cleanup.sh",
@@ -66,6 +67,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
+		            "version" : "0.78.5257.1",
                 "created_at": "{{timestamp}}"
             }
         }]
