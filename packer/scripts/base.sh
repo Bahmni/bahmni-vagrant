@@ -8,7 +8,7 @@ install_virtual_box_specifics(){
 setup_repos(){
 echo "[bahmni]
 name            = Bahmni YUM Repository
-baseurl         = https://bahmni-repo.twhosted.com/packages/bahmni/
+baseurl         = https://bahmni-repo.twhosted.com/rpm/bahmni/
 enabled         = 1
 gpgcheck        = 0" > /etc/yum.repos.d/bahmni.repo
 
@@ -67,7 +67,7 @@ restore_pgsql_db(){
 }
 
 install_bahmni(){
-    yum install -y openmrs 
+    yum install -y openmrs
     yum install -y bahmni-emr bahmni-web bahmni-reports bahmni-lab bahmni-lab-connect bahmni-erp
 }
 
