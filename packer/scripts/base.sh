@@ -43,7 +43,7 @@ install_mysql(){
 restore_mysql_database(){
     #Optional Step
     rm -rf mysql_backup.sql.gz mysql_backup.sql
-    wget https://github.com/Bhamni/emr-functional-tests/blob/master/dbdump/mysql_backup.sql.gz?raw=true -O mysql_backup.sql.gz
+    wget https://github.com/Bahmni/emr-functional-tests/blob/master/dbdump/mysql_backup.sql.gz?raw=true -O mysql_backup.sql.gz
     gzip -d mysql_backup.sql.gz
     mysql -uroot -ppassword < mysql_backup.sql
     echo "FLUSH PRIVILEGES" > flush.sql
@@ -61,7 +61,7 @@ install_pgsql(){
 }
 
 restore_pgsql_db(){
-    wget https://github.com/Bhamni/emr-functional-tests/blob/master/dbdump/pgsql_backup.sql.gz?raw=true -O pgsql_backup.sql.gz
+    wget https://github.com/Bahmni/emr-functional-tests/blob/master/dbdump/pgsql_backup.sql.gz?raw=true -O pgsql_backup.sql.gz
     gzip -d pgsql_backup.sql.gz
     psql -Upostgres < pgsql_backup.sql >/dev/null
 }
@@ -79,6 +79,7 @@ config_services(){
     chkconfig openerp on
     chkconfig bahmni-lab on
 }
+
 cleanup(){
     rm jre-7u79-linux-x64.rpm
     rm pgdg-centos92-9.2-7.noarch.rpm
