@@ -6,8 +6,6 @@ install_virtual_box_specifics(){
 }
 
 setup_repos(){
-    sudo wget https://bintray.com/bahmni/rpm/rpm -O /etc/yum.repos.d/bintray-bahmni-rpm.repo
-
 echo "# Enable to use MySQL 5.6
 [mysql56-community]
 name=MySQL 5.6 Community Server
@@ -17,6 +15,7 @@ gpgcheck=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql" > /etc/yum.repos.d/mysql56.repo
 
     yum install -y wget
+    sudo wget https://bintray.com/bahmni/rpm/rpm -O /etc/yum.repos.d/bintray-bahmni-rpm.repo
     wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
     rpm -Uvh epel-release-latest-6.noarch.rpm
     yum -y update
