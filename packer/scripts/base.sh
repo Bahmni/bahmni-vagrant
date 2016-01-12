@@ -6,7 +6,7 @@ install_virtual_box_specifics(){
 }
 
 setup_repos(){
-wget https://bintray.com/bahmni/rpm/rpm -O bintray-bahmni-rpm.repo
+    sudo wget https://bintray.com/bahmni/rpm/rpm -O /etc/yum.repos.d/bintray-bahmni-rpm.repo
 
 echo "# Enable to use MySQL 5.6
 [mysql56-community]
