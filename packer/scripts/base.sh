@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "VERSION >>>>>>>>>>>>>>>>>>> $BAHMNI_VERSION"
 install_virtual_box_specifics(){
     sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
     yum -y install gcc make gcc-c++ kernel-devel-`uname -r` perl
@@ -63,7 +63,7 @@ restore_pgsql_db(){
 
 install_bahmni(){
     yum install -y openmrs
-    yum install -y bahmni-emr bahmni-web bahmni-reports bahmni-lab bahmni-lab-connect bahmni-erp
+    yum install -y bahmni-emr-$BAHMNI_VERSION bahmni-web-$BAHMNI_VERSION bahmni-reports-$BAHMNI_VERSION bahmni-lab-$BAHMNI_VERSION bahmni-lab-connect-$BAHMNI_VERSION bahmni-erp-$BAHMNI_VERSION
 }
 
 config_services(){
