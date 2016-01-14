@@ -5,8 +5,7 @@
     },
     "variables": {
         "atlas_username": "{{env `ATLAS_USERNAME`}}",
-        "atlas_name": "{{env `ATLAS_NAME`}}",
-        "bahmni_version": "{{env `BAHMNI_PRODUCT_VERSION`}}"
+        "atlas_name": "{{env `ATLAS_NAME`}}"
     },
     "provisioners": [{
         "type": "shell",
@@ -18,14 +17,10 @@
             "scripts/cleanup.sh",
             "scripts/zerodisk.sh"
         ],
-        "override": {
-            "virtualbox-iso": {
-                "environment_vars": [
-                    "BAHMNI_VERSION={{user `bahmni_version`}}"
-                ],
-                "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S bash '{{.Path}}'"
-            }
-        }
+        "environment_vars": [
+            "BAHMNI_VERSION=<? version ?>"
+        ],
+        "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S bash '{{.Path}}'"
     }],
     "builders": [{
         "type": "virtualbox-iso",
@@ -66,7 +61,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "{{user `bahmni_version`}}",
+                "version": "<? version ?>",
                 "created_at": "{{timestamp}}"
             }
         }]

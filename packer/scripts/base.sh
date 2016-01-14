@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "VERSION >>>>>>>>>>>>>>>>>>> $BAHMNI_VERSION"
+
 install_virtual_box_specifics(){
     sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
     yum -y install gcc make gcc-c++ kernel-devel-`uname -r` perl
