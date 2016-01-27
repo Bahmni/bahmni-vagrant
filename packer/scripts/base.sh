@@ -74,6 +74,7 @@ config_services(){
     chkconfig openerp on
     chkconfig bahmni-lab on
     chkconfig bahmni-erp-connect on
+    chkconfig bahmni-reports on
 }
 
 cleanup(){
