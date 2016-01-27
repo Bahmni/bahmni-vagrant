@@ -63,7 +63,7 @@ restore_pgsql_db(){
 
 install_bahmni(){
     yum install -y openmrs
-    yum install -y bahmni-emr-$BAHMNI_VERSION bahmni-web-$BAHMNI_VERSION bahmni-reports-$BAHMNI_VERSION bahmni-lab-$BAHMNI_VERSION bahmni-lab-connect-$BAHMNI_VERSION bahmni-erp-$BAHMNI_VERSION
+    yum install -y bahmni-emr-$BAHMNI_VERSION bahmni-web-$BAHMNI_VERSION bahmni-reports-$BAHMNI_VERSION bahmni-lab-$BAHMNI_VERSION bahmni-lab-connect-$BAHMNI_VERSION bahmni-erp-$BAHMNI_VERSION bahmni-erp-connect-$BAHMNI_VERSION
 }
 
 config_services(){
@@ -73,6 +73,7 @@ config_services(){
     chkconfig openmrs on
     chkconfig openerp on
     chkconfig bahmni-lab on
+    chkconfig bahmni-erp-connect on
 }
 
 cleanup(){
