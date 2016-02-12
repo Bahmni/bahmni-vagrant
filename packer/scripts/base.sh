@@ -83,6 +83,11 @@ cleanup(){
     yum clean packages
 }
 
+if [[ -z $BAHMNI_VERSION ]]; then
+    echo "The variable BAHMNI_VERSION is not set. Aborting installation. Please set this variable before executing the script."
+    exit 1
+fi
+
 install_virtual_box_specifics
 setup_repos
 install_oracle_jre
