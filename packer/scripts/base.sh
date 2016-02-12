@@ -18,7 +18,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql" > /etc/yum.repos.d/mysql56.rep
     sudo wget https://bintray.com/bahmni/rpm/rpm -O /etc/yum.repos.d/bintray-bahmni-rpm.repo
     wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
     rpm -Uvh epel-release-latest-6.noarch.rpm
-    yum -y update
+    yum -y -x 'bahmni*' -x 'openmrs' -x 'mysql-community*' update
 }
 
 install_oracle_jre(){
