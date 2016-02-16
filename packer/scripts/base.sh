@@ -16,14 +16,14 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql" > /etc/yum.repos.d/mysql56.rep
 
     yum install -y wget
     sudo wget https://bintray.com/bahmni/rpm/rpm -O /etc/yum.repos.d/bintray-bahmni-rpm.repo
-    wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+    wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm -O epel-release-latest-6.noarch.rpm
     rpm -Uvh epel-release-latest-6.noarch.rpm
     yum -y -x 'bahmni*' -x 'openmrs' -x 'mysql-community*' update
 }
 
 install_oracle_jre(){
     #Optional - Ensure that jre is installed
-    wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jre-7u79-linux-x64.rpm"
+    wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jre-7u79-linux-x64.rpm" -O jre-7u79-linux-x64.rpm
     yum localinstall -y jre-7u79-linux-x64.rpm
 }
 
@@ -46,7 +46,7 @@ restore_mysql_database(){
 }
 
 install_pgsql(){
-    wget http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-7.noarch.rpm
+    wget http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-7.noarch.rpm -O pgdg-centos92-9.2-7.noarch.rpm
     rpm -ivh pgdg-centos92-9.2-7.noarch.rpm
     yum install -y postgresql92-server
     service postgresql-9.2 initdb
