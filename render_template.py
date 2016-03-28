@@ -9,6 +9,6 @@ if len(sys.argv) != 2:
 bahmni_version = sys.argv[1]
 
 with open('packer/template.json') as template:
-    with open ('packer/template_rendered.json', 'w') as rendered_template:
+    with open('packer/template_rendered.json', 'w') as rendered_template:
         for line in template:
             rendered_template.write(line.replace('<? version ?>', bahmni_version))
