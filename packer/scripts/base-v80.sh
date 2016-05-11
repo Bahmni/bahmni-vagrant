@@ -39,7 +39,7 @@ install_mysql(){
 restore_mysql_database(){
     #Optional Step
     rm -rf mysql_backup.sql.gz mysql_backup.sql
-    wget https://github.com/Bahmni/emr-functional-tests/blob/master/dbdump/mysql_backup.sql.gz?raw=true -O mysql_backup.sql.gz
+    wget https://github.com/Bahmni/emr-functional-tests/blob/af7b0642d17c8b0c514da20dcfc0d7feef9603ff/dbdump/mysql_backup.sql.gz?raw=true -O mysql_backup.sql.gz
     gzip -d mysql_backup.sql.gz
     mysql -uroot -ppassword < mysql_backup.sql
     echo "FLUSH PRIVILEGES" > flush.sql
@@ -57,7 +57,7 @@ install_pgsql(){
 }
 
 restore_pgsql_db(){
-    wget https://github.com/Bahmni/emr-functional-tests/blob/master/dbdump/pgsql_backup.sql.gz?raw=true -O pgsql_backup.sql.gz
+    wget https://github.com/Bahmni/emr-functional-tests/blob/af7b0642d17c8b0c514da20dcfc0d7feef9603ff/dbdump/pgsql_backup.sql.gz?raw=true -O pgsql_backup.sql.gz
     gzip -d pgsql_backup.sql.gz
     for db in `grep "CREATE DATABASE" pgsql_backup.sql  |awk ' {print $3}'`
     do
@@ -68,7 +68,7 @@ restore_pgsql_db(){
 }
 
 install_bahmni(){
-    yum install openmrs-1.12.0-373  
+    yum install -y openmrs-1.12.0-373  
     yum install -y bahmni-emr-$BAHMNI_VERSION bahmni-web-$BAHMNI_VERSION bahmni-reports-$BAHMNI_VERSION bahmni-lab-$BAHMNI_VERSION bahmni-lab-connect-$BAHMNI_VERSION bahmni-erp-$BAHMNI_VERSION bahmni-erp-connect-$BAHMNI_VERSION
     yum install -y bahmni-certs
 }
