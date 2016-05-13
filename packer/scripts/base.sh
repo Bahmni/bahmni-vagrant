@@ -5,7 +5,7 @@ setup_repos() {
     sudo wget https://bintray.com/bahmni/rpm/rpm -O /etc/yum.repos.d/bintray-bahmni-rpm.repo
 }
 
-install_bahmni-installer() {
+install_bahmni_installer() {
     yum install -y bahmni-installer-$BAHMNI_VERSION
 }
 
@@ -33,7 +33,7 @@ if [[ -z $BAHMNI_VERSION ]]; then
 fi
 
 setup_repos
-install_bahmni-installer
+install_bahmni_installer
 setup_ansible_configs
 sudo bahmni install
 config_services
