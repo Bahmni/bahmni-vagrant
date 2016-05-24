@@ -37,4 +37,3 @@ install_bahmni_installer
 setup_ansible_configs
 sudo bahmni install
 config_services
-yum install -y dkms
