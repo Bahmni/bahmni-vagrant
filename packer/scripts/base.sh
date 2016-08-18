@@ -35,5 +35,5 @@ fi
 setup_repos
 install_bahmni_installer
 setup_ansible_configs
-sudo bahmni install
+sudo bahmni -i local install
 config_services
