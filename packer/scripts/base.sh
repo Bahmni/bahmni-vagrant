@@ -6,7 +6,7 @@ setup_repos() {
 }
 
 install_bahmni_installer() {
-    yum install -y bahmni-installer-$BAHMNI_VERSION
+    yum install -y bahmni-installer-${BAHMNI_VERSION}
 }
 
 setup_ansible_configs() {
@@ -27,13 +27,23 @@ config_services() {
     chkconfig bahmni-erp-connect off
 }
 
-if [[ -z $BAHMNI_VERSION ]]; then
+if [[ -z ${BAHMNI_VERSION} ]]; then
     echo "The variable BAHMNI_VERSION is not set. Aborting installation. Please set this variable before executing the script."
     exit 1
 fi
 
+if [[ -z ${ANSIBLE_VERSION} ]]; then
+    echo "The variable ANSIBLE_VERSION is not set. Aborting installation. Please set this variable before executing the script."
+    exit 1
+fi
+
+cleanup_mrs_markers(){
+   mysql -uroot -ppassword openmrs -e "delete from markers"
+}
+
 setup_repos
 install_bahmni_installer
 setup_ansible_configs
-sudo bahmni -i local install
+sudo bahmni -i local -av ${ANSIBLE_VERSION} install
+cleanup_mrs_markers
 config_services

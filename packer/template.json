@@ -11,14 +11,14 @@
         "type": "shell",
         "scripts": [
             "scripts/base.sh",
-            "scripts/dev-tools.sh",
             "scripts/virtualbox.sh",
             "scripts/vagrant.sh",
             "scripts/cleanup.sh",
             "scripts/zerodisk.sh"
         ],
         "environment_vars": [
-            "BAHMNI_VERSION=<? version ?>"
+            "BAHMNI_VERSION=<? version ?>",
+            "ANSIBLE_VERSION=<? ansible_version ?>"
         ],
         "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S bash '{{.Path}}'"
     }],
@@ -34,7 +34,7 @@
         "http_directory": "http",
         "iso_urls": [
             "iso/CentOS-6.8-x86_64-minimal.iso",
-            "http://ftp.iitm.ac.in/centos/6.8/isos/x86_64/CentOS-6.8-x86_64-minimal.iso"
+            "http://mirror.0x.sg/centos/6.8/isos/x86_64/CentOS-6.8-x86_64-minimal.iso"
         ],
         "iso_checksum_type": "md5",
         "iso_checksum": "0ca12fe5f28c2ceed4f4084b41ff8a0b",
