@@ -41,9 +41,18 @@ cleanup_mrs_markers(){
    mysql -uroot -ppassword openmrs -e "delete from markers"
 }
 
+install_oh_my_zsh(){
+    # Installing Dependencies
+    yum install -y zsh
+    yum install -y git
+    # Install oh-my-zsh as default shell
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
+}
+
 setup_repos
 install_bahmni_installer
 setup_ansible_configs
 sudo bahmni -i local -av ${ANSIBLE_VERSION} install
 cleanup_mrs_markers
 config_services
+install_oh_my_zsh
