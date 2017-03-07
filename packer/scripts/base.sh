@@ -52,7 +52,7 @@ install_oh_my_zsh(){
 setup_repos
 install_bahmni_installer
 setup_ansible_configs
-sudo bahmni -i local -av ${ANSIBLE_VERSION} install
+sudo bahmni -i local -aru https://dl.bintray.com/bahmni/rpm/ansible-2.2.0.0-3.el6.noarch.rpm install
 cleanup_mrs_markers
 config_services
 install_oh_my_zsh
