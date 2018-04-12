@@ -46,7 +46,7 @@ install_oh_my_zsh(){
     yum install -y zsh
     yum install -y git
     # Install oh-my-zsh as default shell
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+    sudo curl https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 }
 
 setup_repos
