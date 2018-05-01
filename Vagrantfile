@@ -11,4 +11,6 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |v|
      v.customize ["modifyvm", :id, "--memory", 3092, "--cpus", 2, "--name", "Bahmni-RPM"]
   end
+  config.vm.provision "shell", privileged: false,
+    inline: "echo 'Bahmni can now be accessed at https://192.168.33.10/home'"
 end
